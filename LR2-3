@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <conio.h>
+#include <malloc.h>
+
+
+int n = 10, x = 0, we = 0, a = 1, r = 0, i;
+int* list = (int*)malloc(n * sizeof(int));
+
+
+int xx()
+{
+	while (r < n)
+	{
+		while (a < n)
+		{
+			if (list[x] < list[a])
+			{
+				a++;
+			}
+			else
+			{
+				i = list[x];
+				list[x] = list[a];
+				list[a] = i;
+			}
+		}
+		x++, a = x+1;
+		r++;
+	}
+	we = 0;
+	while (we < n)
+	{
+		printf("%i ", list[we]);
+		we++;
+	}
+	return 0;
+}
+int main()
+{
+	while (x < n)
+	{
+		printf("n = "); scanf_s("%i", &i);
+		list[x] = i, x++;
+	}
+	printf("n = ");
+	x = 0;
+	xx();
+	return 0;
+}
