@@ -1,0 +1,64 @@
+#include <iostream>
+#include<malloc.h>
+#include <cstdlib>
+
+int main()
+{
+    int const n = 7;
+    int mas[n][n];
+    for (int i = 0; i < n; i++)
+    {
+        for (int f = 0; f < n; f++)
+        {
+            mas[i][f] = rand() % 72;
+            printf("%i ", mas[i][f]);
+        }
+        printf("\n");
+    }
+    int min = mas[0][0];
+    int max = mas[n - 1][n - 1];
+    for (int i = 0; i <= n / 2; i++)
+    {
+        for (int f = 0; f < n; f++)
+        {
+            if (f <= n / 2 + i and f >= n / 2 - i)
+            {
+                if (mas[i][f] > max)
+                {
+                    max = mas[i][f];
+                }
+            }
+            else
+            {
+                if (mas[i][f] < min)
+                {
+                    min = mas[i][f];
+                }
+            }
+        }
+    }
+    int b = 0;
+    for (int i = n / 2 + 1; i < n; i++)
+    {
+
+        for (int f = 0; f < n; f++)
+        {
+            if (f > b)
+            {
+                if (mas[i][f] > max)
+                {
+                    max = mas[i][f];
+                }
+            }
+            else
+            {
+                if (mas[i][f] < min)
+                {
+                    min = mas[i][f];
+                }
+            }
+        }
+        b++;
+    }
+    printf("max = %i min = %i ", max, min);
+}
