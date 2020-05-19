@@ -1,17 +1,16 @@
 #include <stdio.h>
 #include <conio.h>
-#include <malloc.h>
+#define e 5
+
+int list[e], list1[e];
 
 
-int n = 10, x = 0, we = 0, a = 1, r = 0, i;
-int* list = (int*)malloc(n * sizeof(int));
-
-
-int xx()
+int m()
 {
-	while (r < n)
+	int x = 0, we = 0, a = 1, r = 0, i;
+	while (r < e)
 	{
-		while (a < n)
+		while (a < e)
 		{
 			if (list[x] < list[a])
 			{
@@ -24,26 +23,29 @@ int xx()
 				list[a] = i;
 			}
 		}
-		x++, a = x+1;
+		x++, a = x + 1;
 		r++;
 	}
 	we = 0;
-	while (we < n)
+	while (we < e)
 	{
 		printf("%i ", list[we]);
 		we++;
 	}
 	return 0;
 }
+
+
+
 int main()
 {
-	while (x < n)
+	int i, x;
+	for (x = 0; x < e; x++)
 	{
 		printf("n = "); scanf_s("%i", &i);
-		list[x] = i, x++;
+		list[x] = i;
 	}
 	printf("n = ");
-	x = 0;
-	xx();
+	m();
 	return 0;
 }
