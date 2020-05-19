@@ -1,86 +1,92 @@
 #include <stdio.h>
-#include <math.h>
 #include <conio.h>
-#include <malloc.h>
-#defaine e 10
+#define e 5
 
-int n = 5, x = 0, we = 0, a = 0, r = 0, i;
+int list[e], list1[e];
 
-int list[e], list1[]e;
-
-for (int i = 0; i < n; i++)
+int P()
 {
-printf("n = ");
-scanf("%i", &o);
-list[i] = o;
-}
-
-int xx()
-{
-	if (r == 0)
+	int j = 0;
+	for (j = 0; j < e; j++)
 	{
-		x = 0;
-		while (x < n)
-		{
-			if (list[x] < 0)
-			{
-				list1[we] = list[x], we++;
-			}
-			x++;
-		}
-		while (a < we)
-		{
-			printf("%i ", list1[a]);
-			a++;
-		}
-		r++;
+		printf("%i ", list[j]);
 	}
 	return 0;
 }
-int xmin()
-{
-	while (x < n)
-	{
-		if (list[x] < 0)
-		{
-			x++;
 
-			if (list[x] > 0)
-			{
-				x++, xmin();
-			}
-			else
-			{
-				xx();
-				return 0;
-			}
+int u()
+{
+	int i,j,a=0;
+	for (i = 0; i < e;)
+	{
+		if (list[i] < 0)
+		{
+			list1[a] = list[i];
+			i++;
+			a++;
 		}
 		else
 		{
-			xx();
-			return 0;
+			i++;
 		}
 	}
-	while (a < n)
+	for (j = 0; j < a; j++)
 	{
-		printf("%i ", list[a]);
-		a++;
+		printf("%i ", list1[j]);
 	}
 	return 0;
 }
-int main()
+
+int m()
 {
-	while (x < n)
-	{
-		printf("n = "); scanf_s("%i", &i);
-		list[x] = i, x++;
-	}
-	printf("n = ");
-	x = 0;
-	if (list[x] > 0)
+	int x = 0,i,r=0;
+	if (list[x] > 0);
 	{
 		x++;
 	}
-	xmin();
+	for (; x < e;)
+	{
+		if(list[x] < 0)
+		{
+			x ++;
+		}
+		else
+		{
+			if (r == 0)
+			{
+				u();
+				r++;
+			}
+		}
+		if (list[x] > 0)
+		{
+			x++;
+		}
+		else
+		{
+			if (r == 0)
+			{
+				u();
+				r++;
+			}
+		}
+	}
+	if (r == 0)
+	{
+		P();
+	}
+	return 0;
+}
+
+int main()
+{
+	int i,x;
+	for (x = 0; x < e; x++)
+	{
+		printf("n = "); scanf_s("%i", &i);
+		list[x] = i;
+	}
+	printf("n = ");
+	m();
 	return 0;
 }
