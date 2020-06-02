@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#pragma warning(disable : 4996)
+
+struct note {
+    char surname[8];
+    char name[8];
+    int data[3];
+    int number;
+};
+
+int main()
+{
+    note person[8];
+
+    int count = 0;
+
+    for (int i = 0; i < 8; i++)
+    {
+        count++;
+        printf("enter name or 0 to exit ");
+        scanf("%s", &person[i].name);
+
+        if (strcmp(person[i].name, "0") == 0)
+        {
+            count--;
+            break;
+        }
+
+        printf("enter surname ");
+        scanf("%s", &person[i].surname);
+
+        printf("enter number ");
+        scanf("%d", &person[i].number);
+
+        printf("enter data dd mm yyyy\n ");
+        scanf("%d", &person[i].data[0]);
+        scanf("%d", &person[i].data[1]);
+        scanf("%d", &person[i].data[2]);
+
+    }
+
+    note change;
+
+    for (int i = 0; i < (count - 1); i++)
+    {
+        for (int j = 1; j < count; j++)
+        {
+            if (strcmp(person[j].surname, person[j + 1].surname) > 0)
+            {
+                change = person[i];
+                person[i] = person[j];
+                person[j] = change;
+            }
+        }
+    }
+
+    for (int i = 0; i < count; i++)
+    {
+        printf("%s %s %d %d %d %d\n", person[i].surname, person[i].name, person[i].number, person[i].data[0], person[i].data[1], person[i].data[2]);
+    }
+    for (int i = 0; i < count; i++)
+    {
+        char search[8];
+
+        printf("enter surname for get info or 0 to exit\n");
+        scanf("%s", &search);
+
+        if (strcmp(search, "0") == 0)
+        {
+            break;
+        }
+
+        for (int j = 0; j < count; j++)
+        {
+            if (strcmp(person[j].surname, search) == 0)
+            {
+                printf("name %s\nsurname %s\nnumber %d\nbirthday: %d.%d.%d\n", person[j].surname, person[j].name, person[j].number, person[j].data[0], person[j].data[1], person[j].data[2]);
+            }
+            else
+            {
+                printf("there is no");
+            }
+        }
+    }
+}
