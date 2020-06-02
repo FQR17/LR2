@@ -1,51 +1,33 @@
 #include <stdio.h>
+#include <stdio.h>
 #include <conio.h>
 #define e 5
 
-int list[e], list1[e];
+int list[e];
 
-
-int m()
-{
-	int x = 0, we = 0, a = 0, r = 1;
-	while (r < e + 1)
-	{
-		if (list[x] < list[r])
-		{
-			list1[a] = list[x];
-			a++;
-			x = r;
-			r++;
-		}
-		else
-		{
-			while (list[x] > list[r])
-			{
-				r++;
-			}
-			list1[a] = list[x];
-			a++;
-			x = r;
-			r++;
-		}
-	}
-	while (we < a)
-	{
-		printf("%i ", list1[we]);
-		we++;
-	}
-	return 0;
-}
 
 int main()
 {
-	int i, x;
-	for (x = 0; x < e; x++)
+	int i,numeral = 0, arrey, j = 0, num = 1;
+	printf("n = ");
+	scanf_s("%i", &i);
+	list[numeral] = i;
+	numeral++;
+	for (arrey = 0; arrey < e-1; arrey++)
 	{
-		printf("n = "); scanf_s("%i", &i);
-		list[x] = i;
+		scanf_s("%i", &i);
+		if (i > list[numeral])
+		{
+			list[numeral] = i;
+			numeral++;
+			num++;
+		}
 	}
 	printf("n = ");
-	m();
+	while (j < num)
+	{
+		printf("%i ", list[j]);
+		j++;
+	}
 	return 0;
 }
