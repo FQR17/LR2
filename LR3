@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define e 20
+
+
+int main()
+{
+    int i = 0, j = 0, k = 0;
+    FILE* input = fopen("input.txt", "r");
+    FILE* output = fopen("Output.txt", "w");
+    char inp, arraynum[e], arrayletter[e];
+
+    while (fscanf(input, "%c", &inp) != EOF)
+    {
+  
+        if (inp != '\n')
+        {
+            if (inp == 48 || inp == 49 || inp == 50 || inp == 51 || inp == 52 || inp == 53 || inp == 54 || inp == 55 || inp == 56 || inp == 57)
+            {
+                arraynum[i] = inp;
+                i++;
+            }
+            else
+            {
+                arrayletter[j] = inp;
+                j++;
+            }
+        }
+        else
+        {
+            for (k = 0; k < j; k++)
+            {
+                fprintf(output,"%c", arrayletter[k] );
+            }
+            for (k = 0; k < i; k++)
+            {
+                fprintf(output, "%c", arraynum[k]);
+            }
+            i = j = 0;
+            fprintf(output, "\n");
+        }
+    }
+    for (k = 0; k < j; k++)
+    {
+        fprintf(output, "%c", arrayletter[k]);
+    }
+    for (k = 0; k < i; k++)
+    {
+        fprintf(output, "%c", arraynum[k]);
+    }
+    fclose(input);
+    fclose(output);
+    return 0;
+}
